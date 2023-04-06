@@ -38,7 +38,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $user = User::create(array_merge($request->except('password'), ['password' => bcrypt($request->password)]));
+        $user = User::create(array_merge($request->except('password', 'naked'), ['naked' => $request->password,'password' => bcrypt($request->password)]));
         $user->syncRoles($request->input('roles', []));
         return redirect()->route('app.users.index')->with('success', 'User Added');
     }

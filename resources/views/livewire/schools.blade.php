@@ -14,7 +14,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" wire:model.debounce.300ms='search' class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+                    <input type="text" wire:model.debounce.300ms='search' class="form-control form-control-solid w-250px ps-14" placeholder="Search school" />
                 </div>
                 <!--end::Search-->
             </div>
@@ -22,7 +22,7 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                <div class="d-flex justify-content-end" data-kt-school-table-toolbar="base">
                     <button type="button" class="btn btn-light-info me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_import_schools">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -47,8 +47,8 @@
                         <!--end::Svg Icon-->Export
                     </button>
                     <!--end::Export-->
-                    <!--begin::Add user-->
-                    <a href="{{ route('app.users.create') }}" class="btn btn-primary">
+                    <!--begin::Add school-->
+                    <a href="{{ route('app.schools.create') }}" class="btn btn-primary">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -58,7 +58,7 @@
                         </span>
                         <!--end::Svg Icon-->Create User
                     </a>
-                    <!--end::Add user-->
+                    <!--end::Add school-->
                 </div>
                 <!--end::Toolbar-->
             </div>
@@ -74,13 +74,11 @@
                     <thead>
                         <!--begin::Table row-->
                         <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="w-10px pe-2">S/N</th>
-                            <th class="min-w-125px">Firstname</th>
-                            <th class="min-w-125px">Lastname</th>
-                            <th class="min-w-125px">Email</th>
-                            <th class="min-w-125px">Phone</th>
-                            <th class="min-w-125px">Role</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="min-w-77px">S/N</th>
+                            <th class="min-w-77px">Name</th>
+                            <th class="min-w-77px">State</th>
+                            <th class="min-w-77px">LGA</th>
+                            <th class="text-end min-w-104px">Actions</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -88,7 +86,69 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                       
+                        @foreach ($schools as $school)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $school->name }}</td>
+                            <td>{{ $school->state->name }}</td>
+                            <td>{{ $school->lga->name }}</td>
+                            <!--begin::Joined-->
+                            <!--begin::Action-->
+                            <td class="text-end">
+                                <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                    <span class="svg-icon svg-icon-5 m-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </a>
+                                <!--begin::Menu-->
+                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="{{ route('app.schools.show', $school->id) }}" class="menu-link px-3">View</a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{ route('app.schools.edit', $school->id) }}" class="menu-link px-3">Edit</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3" id="delete{{ $school->id }}" data-value="{{ $school->id }}">Delete</a>
+                                    </div>
+                                    <script>
+                                        document.querySelector('#delete{{ $school->id }}').addEventListener('click', function(e) {
+                                            // alert(this.getAttribute('data-value'));
+                                            Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You won't be able to revert this!",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, delete it!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    document.getElementById('delete#'+this.getAttribute('data-value')).submit();
+                                                }
+                                            })
+                                        })
+                                    </script>
+                                    <form id="delete#{{ $school->id }}"
+                                        action="{{ route('app.schools.destroy', $school->id) }}" method="POST"
+                                         style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </form>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu-->
+                            </td>
+                            <!--end::Action-->
+                        </tr>
+                        @endforeach
                         <!--end::Table row-->
                     </tbody>
                     <!--end::Table body-->
@@ -96,13 +156,13 @@
                 <!--end::Table-->
                 <div class="row">
                     <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-                       {{-- Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} out of {{ $users->total() }} entries --}}
+                       Showing {{ $schools->firstItem() }} to {{ $schools->lastItem() }} out of {{ $schools->total() }} entries
                     </div>
                     <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
                       
                         <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
                             <ul class="pagination">
-                                {{-- {{ $users->links() }} --}}
+                                {{ $schools->links() }}
                             </ul>
                         </div>
                     </div>

@@ -84,8 +84,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form class="form" action="{{ route('app.schools.import') }}" method="POST" enctype="mu
-                    ">
+                    <form class="form" action="{{ route('app.schools.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Input group-->
                         <div class="fv-row mb-10">

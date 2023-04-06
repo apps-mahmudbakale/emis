@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de6e6b9cfaacf249f47140482f226a83",
+    "content-hash": "5d1c1883620a134a0a24f2bd0749f9fa",
     "packages": [
         {
             "name": "brick/math",
@@ -1122,6 +1122,46 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
+        },
+        {
+            "name": "jajo/ng",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donjajo/NG.git",
+                "reference": "e167dcc496c5fe53e7b3264954a35fdb19e7169e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donjajo/NG/zipball/e167dcc496c5fe53e7b3264954a35fdb19e7169e",
+                "reference": "e167dcc496c5fe53e7b3264954a35fdb19e7169e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jajo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jajo",
+                    "email": "me@donjajo.com"
+                }
+            ],
+            "description": "Class to get data on Nigerian states, capitals and local government areas",
+            "support": {
+                "issues": "https://github.com/donjajo/NG/issues",
+                "source": "https://github.com/donjajo/NG/tree/master"
+            },
+            "time": "2018-06-14T09:36:50+00:00"
         },
         {
             "name": "laravel/framework",

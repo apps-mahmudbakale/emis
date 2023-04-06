@@ -29,10 +29,12 @@ class SchoolController extends Controller
     public function import(Request $request)
     {
         // dd($request->all());
+        // if ($request->hasFile('csv')) {
+        //     dd($request->file('csv'));
+        // }
+        Excel::import(new SchoolsImport, $request->file('csv')->store('files'));
 
-        Excel::import(new SchoolsImport, $request->csv);
-
-        // return redirect()->route('app.schools.index')->with('success', 'Schools Imported');
+        return redirect()->route('app.schools.index')->with('success', 'Schools Imported');
     }
 
     /**

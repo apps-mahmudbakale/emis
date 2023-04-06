@@ -14,12 +14,20 @@ return new class extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code')->nullable();
+            $table->string('location')->nullable();
+            $table->string('type_school')->nullable();
+            $table->string('education_level')->nullable();
             $table->integer('state_id');
             $table->integer('lga_id');
             $table->integer('no_of_students')->nullable();
             $table->integer('no_of_staff')->nullable();
-            // $table->string('type');
+            $table->integer('no_of_boys')->nullable();
+            $table->integer('no_of_girls')->nullable();
+            $table->string('type')->nullable();
             $table->string('category')->nullable();
+            $table->string('agency')->nullable();
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }
