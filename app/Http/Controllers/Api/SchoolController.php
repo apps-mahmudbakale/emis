@@ -32,4 +32,9 @@ class SchoolController extends Controller
         
         return response()->json($lgas);
     }
+
+    public function saveSchoool(Request $request)
+    {
+        # code...
+    }
 }
