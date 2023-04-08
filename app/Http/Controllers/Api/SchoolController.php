@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Lga;
-use App\Models\School;
 use App\Models\State;
+use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class SchoolController extends Controller
 {
@@ -33,8 +34,26 @@ class SchoolController extends Controller
         return response()->json($lgas);
     }
 
-    public function saveSchoool(Request $request)
+    public function saveSchool(Request $request)
     {
-        # code...
+        
+        $school = DB::table('schools')->where('id', $request->school_id)->update([
+            'no_of_students' =>$request->no_of_students,
+            'no_of_staff' => $request->no_of_staff,
+            'no_of_boys' => $request->no_of_boys,
+            'no_of_girls' => $request->no_of_girls,
+            'type' => $request->school_type,
+            'gender' => $request->school_gender,
+            'category' => $request->school_category,
+            'agency' => $request->school_agency,
+        ]);
+
+        if($school){
+            return response()->json([
+                'success' => true,
+                'message' => 'School Synced Successfully'
+            ]);
+        }
+       
     }
 }

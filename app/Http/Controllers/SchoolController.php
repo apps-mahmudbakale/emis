@@ -50,7 +50,7 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+        return view('schools.show', compact('school'));
     }
 
     /**

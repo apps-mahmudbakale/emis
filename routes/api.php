@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('users',  [UserController::class, 'index']);
 Route::get('schools',  [SchoolController::class, 'index']);
+Route::post('schools/save',  [SchoolController::class, 'saveSchool']);
 Route::get('schools/findByLga/{lga}',  [SchoolController::class, 'findByLga']);
 Route::get('lgaByState/{state}',  [SchoolController::class, 'lgaByState']);
