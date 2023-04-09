@@ -150,12 +150,7 @@
                        Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} out of {{ $users->total() }} entries
                     </div>
                     <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                      
-                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
-                            <ul class="pagination">
                                 {{ $users->links() }}
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

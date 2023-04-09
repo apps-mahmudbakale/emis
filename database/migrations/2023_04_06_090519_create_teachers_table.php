@@ -13,9 +13,24 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->string('staff_id');
+            $table->foreignId('school_id')->references('id')->on('schools')->onDelete('cascade');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('phone');
+            $table->string('gender');
+            $table->string('age_range');
+            $table->string('status');
+            $table->string('other_school');
+            $table->string('other_status');
+            $table->string('education');
+            $table->string('experience_teacher');
+            $table->string('experience_school');
+            $table->string('subject');
+            $table->string('certification');
+            $table->string('competency');
+            $table->string('cmp_skills');
+            $table->string('ict_level');
             $table->timestamps();
         });
     }
