@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\SchoolController;
+use App\Http\Controllers\Api\FacilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,6 @@ Route::get('users',  [UserController::class, 'index']);
 Route::get('schools',  [SchoolController::class, 'index']);
 Route::post('schools/save',  [SchoolController::class, 'saveSchool']);
 Route::post('staff/create',  [StaffController::class, 'create']);
+Route::post('facility/create',  [FacilityController::class, 'create']);
 Route::get('schools/findByLga/{lga}',  [SchoolController::class, 'findByLga']);
 Route::get('lgaByState/{state}',  [SchoolController::class, 'lgaByState']);

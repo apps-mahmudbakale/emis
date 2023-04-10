@@ -28,5 +28,7 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => 'auth'], functi
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('schools', SchoolController::class);
+    Route::resource('teachers', TeacherController::class);
+    Route::resource('facilities', FacilityController::class);
     Route::post('schools/import', [SchoolController::class, 'import'])->name('schools.import');
 });
