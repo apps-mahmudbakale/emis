@@ -14,7 +14,7 @@ class Schools extends Base
             $schools = School::query()
                 ->where('name', 'like', '%' . $this->search . '%')
                 // ->Orwhere('email', 'like', '%' . $this->search . '%')
-                ->paginate(10);
+                ->simplePaginate(10);
 
             return view(
                 'livewire.schools',
@@ -22,7 +22,7 @@ class Schools extends Base
             );
         } else {
             $schools = School::query()->orderBy($this->sortBy, $this->sortDirection)
-                ->paginate($this->perPage);
+                ->simplePaginate($this->perPage);
             return view(
                 'livewire.schools',
                 ['schools' => $schools]
