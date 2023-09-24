@@ -9,8 +9,6 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teachers = Teacher::all();
-
-        dd($teachers);
+        return view('teachers.index');
     }
 }

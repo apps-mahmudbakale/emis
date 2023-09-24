@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!--begin::Content-->
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background-image: url('{{asset('Picture 1.png')}}');background-size: cover;">
         <!--begin::Toolbar-->
         <div class="toolbar bg-transparent pt-6 mb-5" id="kt_toolbar">
             <!--begin::Container-->
@@ -39,14 +39,14 @@
         <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <!--begin::Container-->
-            <div id="kt_content_container" class="container-xxl">
+            <div id="" class="container">
                 <!--begin::Row-->
-                <div class="row g-5 g-xl-10 mb-xl-10">
+                <div class="row">
                      <!--begin::Col-->
-                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -77,10 +77,10 @@
                     <!--end::Col-->
 
                      <!--begin::Col-->
-                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                        <a href=""><div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -105,15 +105,15 @@
                                 <!--end::Progress-->
                             </div>
                             <!--end::Card body-->
-                        </div>
+                        </div></a>
                         <!--end::Card widget 16-->
                     </div>
                     <!--end::Col-->
                      <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #009ff7;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                            style="background-color: #009ff7;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -143,10 +143,10 @@
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -176,10 +176,10 @@
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #50cd89;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                            style="background-color: #50cd89;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -210,10 +210,10 @@
                     <!--end::Col-->
 
                     <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
                         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}')">
+                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->

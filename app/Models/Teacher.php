@@ -29,4 +29,9 @@ class Teacher extends Model
         'cmp_skills',
         'ict_level'
     ];
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }

@@ -58,7 +58,7 @@
                 <!--begin::Theme mode-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <!--begin::Theme mode docs-->
-                    <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" href="">
+                    <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" onclick="toggle('html')" >
                         <i class="fonticon-sun fs-2"></i>
                     </a>
                     <!--end::Theme mode docs-->
@@ -82,7 +82,7 @@
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
+                                    <div class="fw-bolder d-flex align-items-center fs-5">{{auth()->user()->firstname}}
                                     <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
                                     <a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
                                 </div>
@@ -95,7 +95,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
+                            <a href="" class="menu-link px-5">My Profile</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
@@ -103,7 +103,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="" class="menu-link px-5">Sign Out</a>
+                            <a href="" onclick="event.preventDefault(); document.getElementById('logoutform').submit();" class="menu-link px-5">Sign Out</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
@@ -113,7 +113,7 @@
                         <div class="menu-item px-5">
                             <div class="menu-content px-5">
                                 <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="../../demo1/dist/index.html" />
+                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" id="dark_mode" name="mode"  />
                                     <span class="pulse-ring ms-n1"></span>
                                     <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
                                 </label>
@@ -147,3 +147,9 @@
     <!--end::Container-->
 </div>
 <!--end::Header-->
+<script>
+function toggle(id){
+let element = document.getElementById(id);
+element.getAttribute("data-bs-theme")==="dark" ? element.setAttribute("data-bs-theme","light"):element.setAttribute("data-bs-theme","dark");
+}
+</script>

@@ -7,6 +7,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SystemSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,7 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => 'auth'], functi
     Route::resource('teachers', TeacherController::class);
     Route::resource('facilities', FacilityController::class);
     Route::post('schools/import', [SchoolController::class, 'import'])->name('schools.import');
+    Route::resource('settings', SystemSettingsController::class)->except('store', 'update', 'edit', 'show', 'destroy');
+    Route::post('settings', [SystemSettingsController::class, 'updateSystemSettings'])->name('update.system.settings');
+    Route::post('settings/currency', [SystemSettingsController::class, 'updateStoreCurrency'])->name('update.store.currency');
 });

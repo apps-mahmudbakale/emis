@@ -10,7 +10,8 @@
                 <!--begin::Logo-->
                 <a href="/" class="mb-12">
                     {{-- <img alt="Logo" src="{{asset('media/logos/logo-1.svg')}}" class="h-40px" /> --}}
-                    <h2>EMIS KANO</h2>
+                    <h2>{{ app(App\Settings\SystemSettings::class)->app_name ?: 'Clinic'
+                    }}</h2>
                 </a>
                 <!--end::Logo-->
                 <!--begin::Wrapper-->
@@ -22,7 +23,8 @@
                         <!--begin::Heading-->
                         <div class="text-center mb-10">
                             <!--begin::Title-->
-                            <h1 class="text-dark mb-3">Sign In to EMIS</h1>
+                            <h1 class="text-dark mb-3">Sign In to  {{app(App\Settings\SystemSettings::class)->app_name ?: 'Clinic'
+                            }}</h1>
                             <!--end::Title-->
                         </div>
                         <!--begin::Heading-->
