@@ -21,7 +21,7 @@ use App\Http\Controllers\SystemSettingsController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect('/login');
 });
 
 Auth::routes();
