@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Lga;
+use App\Models\State;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -22,6 +24,11 @@ use App\Http\Controllers\SystemSettingsController;
 
 Route::get('/', function () {
     return redirect('/login');
+});
+
+Route::get('/home', function () {
+    $state = State::where('name', 'Kano')->first();
+    return Lga::where('state_id', $state->id)->where('name', 'Ajingi')->first();
 });
 
 Auth::routes();

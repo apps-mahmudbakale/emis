@@ -91,7 +91,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $school->name }}</td>
                             <td>{{ $school->state->name }}</td>
-                            <td>{{ $school->lga->name }}</td>
+                            <td>{{ $school->lga->name ?? 'N/A' }}</td>
                             <!--begin::Joined-->
                             <!--begin::Action-->
                             <td class="text-end">

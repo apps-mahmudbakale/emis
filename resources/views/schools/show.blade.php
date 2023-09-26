@@ -137,7 +137,7 @@
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $school->lga->name }}
+                                                <!--end::Svg Icon-->{{ $school->lga->name ?? 'N/A' }}
                                             </a>
                                             <a href="#"
                                                 class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
@@ -247,7 +247,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name ?? 'N/A' }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
