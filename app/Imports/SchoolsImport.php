@@ -20,8 +20,8 @@ class SchoolsImport implements ToModel, WithHeadingRow
     {
         // dd($row['lga']);
         $state = State::where('name', $row['state'])->first();
-        $lga_id = Lga::where('state_id', $state->id)->where('name', $row['lga'])->first();
-        dd($lga_id);
+        $lga = Lga::where('state_id', $state->id)->where('name', ucfirst($row['lga']))->first();
+        // dd($row['']);
         return new School([
             'name' => $row['school'],
             'code' => $row['code'],
@@ -29,7 +29,7 @@ class SchoolsImport implements ToModel, WithHeadingRow
             'type_school' => $row['type_school'],
             'education_level' => $row['education_level'],
             'state_id' => $state->id,
-            'lga_id' => $lga_id,
+            'lga_id' => $lga->id ? $lga->id : null,
         ]);
     }
 }
