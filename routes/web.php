@@ -5,10 +5,14 @@ use App\Models\State;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\SystemSettingsController;
 
 /*
@@ -39,6 +43,10 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => 'auth'], functi
     Route::resource('roles', RoleController::class);
     Route::resource('schools', SchoolController::class);
     Route::resource('teachers', TeacherController::class);
+    Route::resource('students', StudentController::class);
+    Route::resource('reports', ReportController::class);
+    Route::resource('resources', ResourcesController::class);
+    Route::resource('monitoring', MonitoringController::class);
     Route::resource('facilities', FacilityController::class);
     Route::post('schools/import', [SchoolController::class, 'import'])->name('schools.import');
     Route::resource('settings', SystemSettingsController::class)->except('store', 'update', 'edit', 'show', 'destroy');

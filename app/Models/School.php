@@ -19,7 +19,10 @@ class School extends Model
         'lga_id',
         'no_of_students',
         'no_of_staff',
-        'category',
+        'no_of_boys',
+        'no_of_girls',
+        'agency',
+        'gender'
 
     ];
 

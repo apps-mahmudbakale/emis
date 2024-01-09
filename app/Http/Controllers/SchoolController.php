@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lga;
+use App\Models\State;
 use App\Models\School;
 use Illuminate\Http\Request;
 use App\Imports\SchoolsImport;
@@ -22,7 +24,9 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $lgas = Lga::where('state_id', $state->id)->get();
+        return view('schools.create', compact('lgas'));
     }
 
 
@@ -42,7 +46,9 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $school = School::create(array_merge($request->all(), ['state_id' => $state->id]));
+        return redirect()->route('app.schools.index')->with('success', 'Schools Added');
     }
 
     /**
@@ -58,7 +64,9 @@ class SchoolController extends Controller
      */
     public function edit(School $school)
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $lgas = Lga::where('state_id', $state->id)->get();
+        return view('schools.edit', compact('school', 'lgas'));
     }
 
     /**
@@ -66,7 +74,9 @@ class SchoolController extends Controller
      */
     public function update(Request $request, School $school)
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $school->update(array_merge($request->all(), ['state_id' => $state->id]));
+        return redirect()->route('app.schools.index')->with('success', 'Schools Updated');
     }
 
     /**
@@ -74,6 +84,7 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+        $school->delete();
+        return redirect()->route('app.schools.index')->with('success', 'Schools Deleted');
     }
 }

@@ -202,7 +202,7 @@
                         </div>
                         <!--end::Card title-->
                         <!--begin::Action-->
-                        <a href="" class="btn btn-primary align-self-center">Edit Profile</a>
+                        <a href="{{route('app.schools.edit', $school->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
                         <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
@@ -268,17 +268,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->type }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Category</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->category }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $school->type_school }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
@@ -342,7 +332,7 @@
                             </div>
                             <!--end::Col-->
                         </div>
-                       
+
                     </div>
                     <!--end::Card body-->
                 </div>

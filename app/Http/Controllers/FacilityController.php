@@ -14,7 +14,8 @@ class FacilityController extends Controller
     {
         $facilities = Facility::all();
 
-        dd($facilities);
+        // dd($facilities);
+        return view('facilities.index', compact('facilities'));
     }
 
     /**

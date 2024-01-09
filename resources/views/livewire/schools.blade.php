@@ -56,7 +56,7 @@
                                 <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->Create User
+                        <!--end::Svg Icon-->Create School
                     </a>
                     <!--end::Add school-->
                 </div>
@@ -158,7 +158,7 @@
                     <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
                        {{-- Showing {{ $schools->firstItem() }} to {{ $schools->lastItem() }} out of {{ $schools->total() }} entries --}}
                     </div>
-                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">  
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
                                 {{ $schools->links() }}
                     </div>
                 </div>

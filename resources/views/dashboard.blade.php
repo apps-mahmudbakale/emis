@@ -45,7 +45,7 @@
                      <!--begin::Col-->
                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
                         <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
+                        <a href="{{route('app.reports.index')}}"><div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
                             style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
@@ -65,13 +65,14 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
                             <!--end::Card body-->
                         </div>
+                        </a>
                         <!--end::Card widget 16-->
                     </div>
                     <!--end::Col-->
@@ -99,8 +100,8 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
@@ -132,8 +133,8 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
@@ -165,8 +166,8 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
@@ -198,8 +199,8 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
@@ -232,8 +233,8 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <!--begin::Progress-->
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                    
-                                   
+
+
                                 </div>
                                 <!--end::Progress-->
                             </div>
