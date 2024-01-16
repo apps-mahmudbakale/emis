@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lga;
+use App\Models\State;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -20,7 +22,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $lgas = Lga::where('state_id', $state->id)->get();
+        return view('students.create', compact('lgas'));
     }
 
     /**
@@ -28,7 +32,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = Student::create($request->all());
+        return redirect()->route('app.students.index')->with('success', 'Student Added');
     }
 
     /**
@@ -36,7 +41,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('students.show', compact('student'));
     }
 
     /**

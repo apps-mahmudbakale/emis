@@ -79,7 +79,7 @@
                             <th class="min-w-77px">Gender</th>
                             <th class="min-w-77px">Phone</th>
                             <th class="min-w-77px">School</th>
-                            <th class="text-end min-w-104px">Actions</th>
+                            <th class="min-w-77px">Actions</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -90,13 +90,13 @@
                         @foreach ($teachers as $teacher)
                         <tr>
                             <td style="width:3%">{{ $loop->iteration }}</td>
-                            <td style="width:15%">{{ $teacher->firstname }} {{ $teacher->lastname }}</td>
+                            <td style="width:25%">{{ $teacher->firstname }} {{ $teacher->lastname }}</td>
                             <td style="width:8%">{{ $teacher->gender }}</td>
                             <td style="width:14%">{{ $teacher->phone }}</td>
-                            <td style="width:50%">{{ $teacher->school->name }}</td>
+                            <td style="width:40%">{{$teacher->school->name}}</td>
                             <!--begin::Joined-->
                             <!--begin::Action-->
-                            <td class="text-end">
+                            <td class="">
                                 <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                     <span class="svg-icon svg-icon-5 m-0">
@@ -160,7 +160,7 @@
                     <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
                        {{-- Showing {{ $teachers->firstItem() }} to {{ $teachers->lastItem() }} out of {{ $teachers->total() }} entries --}}
                     </div>
-                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">  
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
                                 {{ $teachers->links() }}
                     </div>
                 </div>

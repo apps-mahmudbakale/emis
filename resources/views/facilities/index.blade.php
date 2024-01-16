@@ -47,7 +47,7 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Card-->
-                <livewire:facility />
+                <livewire:facility :school="0" />
                 <!--end::Card-->
             </div>
             <!--end::Container-->

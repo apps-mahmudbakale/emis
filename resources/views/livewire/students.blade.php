@@ -14,7 +14,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" wire:model.debounce.300ms='search' class="form-control form-control-solid w-250px ps-14" placeholder="Search teacher" />
+                    <input type="text" wire:model.debounce.300ms='search' class="form-control form-control-solid w-250px ps-14" placeholder="Search student" />
                 </div>
                 <!--end::Search-->
             </div>
@@ -22,7 +22,7 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-teacher-table-toolbar="base">
+                <div class="d-flex justify-content-end" data-kt-student-table-toolbar="base">
                     <button type="button" class="btn btn-light-info me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_import_schools">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -47,8 +47,8 @@
                         <!--end::Svg Icon-->Export
                     </button>
                     <!--end::Export-->
-                    <!--begin::Add teacher-->
-                    <a href="{{ route('app.teachers.create') }}" class="btn btn-primary">
+                    <!--begin::Add student-->
+                    <a href="{{ route('app.students.create') }}" class="btn btn-primary">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -58,7 +58,7 @@
                         </span>
                         <!--end::Svg Icon-->Create Student
                     </a>
-                    <!--end::Add teacher-->
+                    <!--end::Add student-->
                 </div>
                 <!--end::Toolbar-->
             </div>
@@ -77,7 +77,7 @@
                             <th class="min-w-77px">S/N</th>
                             <th class="min-w-77px">Name</th>
                             <th class="min-w-77px">Gender</th>
-                            <th class="min-w-77px">Phone</th>
+                            <th class="min-w-77px">Date 0f Birth</th>
                             <th class="min-w-77px">School</th>
                             <th class="text-end min-w-104px">Actions</th>
                         </tr>
@@ -87,13 +87,13 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        {{-- @foreach ($teachers as $teacher)
+                        @foreach ($students as $student)
                         <tr>
-                            <td style="width:3%">{{ $loop->iteration }}</td>
-                            <td style="width:15%">{{ $teacher->firstname }} {{ $teacher->lastname }}</td>
-                            <td style="width:8%">{{ $teacher->gender }}</td>
-                            <td style="width:14%">{{ $teacher->phone }}</td>
-                            <td style="width:50%">{{ $teacher->school->name }}</td>
+                            <td style="width:5%">{{ $loop->iteration }}</td>
+                            <td style="width:25%">{{ $student->name }}</td>
+                            <td style="width:8%">{{ $student->gender }}</td>
+                            <td style="width:15%">{{ $student->date_of_birth }}</td>
+                            <td style="width:35%">{{ $student->school->name }}</td>
                             <!--begin::Joined-->
                             <!--begin::Action-->
                             <td class="text-end">
@@ -110,18 +110,18 @@
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="{{ route('app.teachers.show', $teacher->id) }}" class="menu-link px-3">View</a>
+                                        <a href="{{ route('app.students.show', $student->id) }}" class="menu-link px-3">View</a>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a href="{{ route('app.teachers.edit', $teacher->id) }}" class="menu-link px-3">Edit</a>
+                                        <a href="{{ route('app.students.edit', $student->id) }}" class="menu-link px-3">Edit</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3" id="delete{{ $teacher->id }}" data-value="{{ $teacher->id }}">Delete</a>
+                                        <a href="#" class="menu-link px-3" id="delete{{ $student->id }}" data-value="{{ $student->id }}">Delete</a>
                                     </div>
                                     <script>
-                                        document.querySelector('#delete{{ $teacher->id }}').addEventListener('click', function(e) {
+                                        document.querySelector('#delete{{ $student->id }}').addEventListener('click', function(e) {
                                             // alert(this.getAttribute('data-value'));
                                             Swal.fire({
                                                 title: 'Are you sure?',
@@ -138,8 +138,8 @@
                                             })
                                         })
                                     </script>
-                                    <form id="delete#{{ $teacher->id }}"
-                                        action="{{ route('app.teachers.destroy', $teacher->id) }}" method="POST"
+                                    <form id="delete#{{ $student->id }}"
+                                        action="{{ route('app.students.destroy', $student->id) }}" method="POST"
                                          style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -150,18 +150,18 @@
                             </td>
                             <!--end::Action-->
                         </tr>
-                        @endforeach --}}
+                        @endforeach
                         <!--end::Table row-->
                     </tbody>
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
                 <div class="row">
-                    <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-                       {{-- Showing {{ $teachers->firstItem() }} to {{ $teachers->lastItem() }} out of {{ $teachers->total() }} entries --}}
+                    {{-- <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                       Showing {{ $students->firstItem() }} to {{ $students->lastItem() }} out of {{ $students->total() }} entries
                     </div>
-                    {{-- <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                                {{ $teachers->links() }}
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                                {{ $students->links() }}
                     </div> --}}
                 </div>
             </div>

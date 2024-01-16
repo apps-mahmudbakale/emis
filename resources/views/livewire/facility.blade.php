@@ -48,7 +48,7 @@
                     </button>
                     <!--end::Export-->
                     <!--begin::Add teacher-->
-                    <a href="{{ route('app.teachers.create') }}" class="btn btn-primary">
+                    <a href="{{ route('app.facilities.create') }}" class="btn btn-primary">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -75,8 +75,7 @@
                         <!--begin::Table row-->
                         <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                             <th class="min-w-77px">S/N</th>
-                            <th class="min-w-77px">Facilty</th>
-                            <th class="min-w-77px">School</th>
+                            <th class="min-w-100px">School</th>
                             <th class="text-end min-w-104px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -85,13 +84,10 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        {{-- @foreach ($teachers as $teacher)
+                        @foreach ($facilities as $facility)
                         <tr>
-                            <td style="width:3%">{{ $loop->iteration }}</td>
-                            <td style="width:15%">{{ $teacher->firstname }} {{ $teacher->lastname }}</td>
-                            <td style="width:8%">{{ $teacher->gender }}</td>
-                            <td style="width:14%">{{ $teacher->phone }}</td>
-                            <td style="width:50%">{{ $teacher->school->name }}</td>
+                            <td style="width:15%">{{ $loop->iteration }}</td>
+                            <td style="width:20%">{{ $facility->school->name }}</td>
                             <!--begin::Joined-->
                             <!--begin::Action-->
                             <td class="text-end">
@@ -108,18 +104,18 @@
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="{{ route('app.teachers.show', $teacher->id) }}" class="menu-link px-3">View</a>
+                                        <a href="{{ route('app.facilities.show', $facility->id) }}" class="menu-link px-3">View</a>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a href="{{ route('app.teachers.edit', $teacher->id) }}" class="menu-link px-3">Edit</a>
+                                        <a href="{{ route('app.facilities.edit', $facility->id) }}" class="menu-link px-3">Edit</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3" id="delete{{ $teacher->id }}" data-value="{{ $teacher->id }}">Delete</a>
+                                        <a href="#" class="menu-link px-3" id="delete{{ $facility->id }}" data-value="{{ $facility->id }}">Delete</a>
                                     </div>
                                     <script>
-                                        document.querySelector('#delete{{ $teacher->id }}').addEventListener('click', function(e) {
+                                        document.querySelector('#delete{{ $facility->id }}').addEventListener('click', function(e) {
                                             // alert(this.getAttribute('data-value'));
                                             Swal.fire({
                                                 title: 'Are you sure?',
@@ -136,8 +132,8 @@
                                             })
                                         })
                                     </script>
-                                    <form id="delete#{{ $teacher->id }}"
-                                        action="{{ route('app.teachers.destroy', $teacher->id) }}" method="POST"
+                                    <form id="delete#{{ $facility->id }}"
+                                        action="{{ route('app.facilities.destroy', $facility->id) }}" method="POST"
                                          style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -148,7 +144,7 @@
                             </td>
                             <!--end::Action-->
                         </tr>
-                        @endforeach --}}
+                        @endforeach
                         <!--end::Table row-->
                     </tbody>
                     <!--end::Table body-->

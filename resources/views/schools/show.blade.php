@@ -1,32 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        table {
-            font-family: Verdana;
-            font-size: 14px;
-            border-collapse: collapse;
-            width: 600px;
-        }
 
-        td,
-        th {
-            padding: 10px;
-            text-align: left;
-            margin: 0;
-        }
-
-        tbody tr:nth-child(2n) {
-            background-color: #eee;
-        }
-
-        th {
-            position: sticky;
-            top: 0;
-            background-color: #333 !important;
-            color: white !important;
-        }
-    </style>
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Toolbar-->
         <div class="toolbar" id="kt_toolbar">
@@ -169,22 +144,22 @@
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Overview</a>
+                                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" data-bs-toggle="tab" href="#kt_tab_pane_overview">Overview</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Teachers</a>
+                                <a class="nav-link text-active-primary ms-0 me-10 py-5" data-bs-toggle="tab" href="#kt_tab_pane_teachers">Teachers</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Students</a>
+                                <a class="nav-link text-active-primary ms-0 me-10 py-5" data-bs-toggle="tab" href="#kt_tab_pane_students">Students</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Facilities</a>
+                                <a class="nav-link text-active-primary ms-0 me-10 py-5" data-bs-toggle="tab" href="#kt_tab_pane_facilities">Facilities</a>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -193,148 +168,337 @@
                 </div>
                 <!--end::Navbar-->
                 <!--begin::details View-->
-                <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
-                    <!--begin::Card header-->
-                    <div class="card-header cursor-pointer">
-                        <!--begin::Card title-->
-                        <div class="card-title m-0">
-                            <h3 class="fw-bolder m-0">School Profile Details</h3>
-                        </div>
-                        <!--end::Card title-->
-                        <!--begin::Action-->
-                        <a href="{{route('app.schools.edit', $school->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
-                        <!--end::Action-->
-                    </div>
-                    <!--begin::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body p-9">
-                        <!--begin::Row-->
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Name</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8">
-                                <span class="fw-bolder fs-6 text-gray-800">{{ $school->name }}</span>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="kt_tab_pane_overview" role="tabpanel">
+                        <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+                            <!--begin::Card header-->
+                            <div class="card-header cursor-pointer">
+                                <!--begin::Card title-->
+                                <div class="card-title m-0">
+                                    <h3 class="fw-bolder m-0">School Profile Details</h3>
+                                </div>
+                                <!--end::Card title-->
+                                <!--begin::Action-->
+                                <a href="{{route('app.schools.edit', $school->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
+                                <!--end::Action-->
                             </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Code</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->code }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Row-->
-                        <!--begin::Input group-->
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">State</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->state->name }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">LGA</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name ?? 'N/A' }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Location</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->location }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                         <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Type</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->type_school }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Agency</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->agency }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Gender</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->gender }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Staff</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_staff }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Students</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_students }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Boys Students</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_boys }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Girls Students</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_girls }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
+                            <!--begin::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body p-9">
+                                <!--begin::Row-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Name</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8">
+                                        <span class="fw-bolder fs-6 text-gray-800">{{ $school->name }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Code</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->code }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Input group-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">State</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->state->name }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">LGA</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name ?? 'N/A' }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Location</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->location }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                 <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Type</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->type_school }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Agency</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->agency }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Gender</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->gender }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">No of Staff</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_staff }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">No of Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_students }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">Boys Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_boys }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">Girls Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_girls }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
 
+                            </div>
+                            <!--end::Card body-->
+                        </div>
                     </div>
-                    <!--end::Card body-->
+                    <div class="tab-pane fade " id="kt_tab_pane_teachers" role="tabpanel">
+                        <div class="card mb-5 mb-xl-10">
+                            <!--begin::Card header-->
+                            <div class="card-header cursor-pointer">
+                                <!--begin::Card title-->
+                                <div class="card-title m-0">
+                                    <h3 class="fw-bolder m-0">Teachers</h3>
+                                </div>
+                                <!--end::Card title-->
+                                <!--begin::Action-->
+                                <a href="{{route('app.schools.edit', $school->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
+                                <!--end::Action-->
+                            </div>
+                            <!--begin::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body p-9">
+                                <!--begin::Row-->
+                                <livewire:teachers :school="$school->id" />
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="kt_tab_pane_students" role="tabpanel">
+                        <div class="card mb-5 mb-xl-10">
+                            <!--begin::Card header-->
+                            <div class="card-header cursor-pointer">
+                                <!--begin::Card title-->
+                                <div class="card-title m-0">
+                                    <h3 class="fw-bolder m-0">Students</h3>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--begin::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body p-9">
+                                <livewire:students/>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="kt_tab_pane_facilities" role="tabpanel">
+                        <div class="card mb-5 mb-xl-10">
+                            <!--begin::Card header-->
+                            <div class="card-header cursor-pointer">
+                                <!--begin::Card title-->
+                                <div class="card-title m-0">
+                                    <h3 class="fw-bolder m-0">Facilities {{$school->id}}</h3>
+                                </div>
+                                <!--end::Card title-->
+                                <!--begin::Action-->
+                                <a href="{{route('app.schools.edit', $school->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
+                                <!--end::Action-->
+                            </div>
+                            <!--begin::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body p-9">
+                                <!--begin::Row-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Name</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8">
+                                        <span class="fw-bolder fs-6 text-gray-800">{{ $school->name }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Code</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->code }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Input group-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">State</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->state->name }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">LGA</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name ?? 'N/A' }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Location</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->location }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                 <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Type</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->type_school }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Agency</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->agency }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">School Gender</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->gender }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">No of Staff</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_staff }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">No of Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_students }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">Boys Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_boys }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <div class="row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 fw-bold text-muted">Girls Students</label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_girls }}</span>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                    </div>
                 </div>
                 <!--end::details View-->
             </div>

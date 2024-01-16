@@ -11,7 +11,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Users</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Teachers</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -29,7 +29,7 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">User Management</li>
+                    <li class="breadcrumb-item text-muted">Teacher Management</li>
                     <!--end::Item-->
                     <!--begin::Item-->
                     <li class="breadcrumb-item">
@@ -37,7 +37,7 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted"><a href="{{ route('app.users.index') }}" class="text-muted text-hover-primary">Users</a></li>
+                    <li class="breadcrumb-item text-muted"><a href="{{ route('app.teachers.index') }}" class="text-muted text-hover-primary">Teachers</a></li>
                     <!--end::Item-->
                     <!--begin::Item-->
                     <li class="breadcrumb-item">
@@ -45,7 +45,7 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-dark">Update User</li>
+                    <li class="breadcrumb-item text-dark">Update Teacher</li>
                     <!--end::Item-->
                 </ul>
                 <!--end::Breadcrumb-->
@@ -62,37 +62,138 @@
             <!--begin::Card-->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Update User</h3>
+                    <h3 class="card-title">Create Teacher</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{route('app.users.update', $user->id)}}" method="POST">
+                <form action="{{route('app.teachers.update', $teacher->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <!-- form start -->
                     <div class="card-body">
                         <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" name="firstname" value="{{old('firstname', isset($user) ? $user->firstname : '')}}" class="form-control" placeholder="Name" id="fullname">
+                            <input type="text" name="firstname" value="{{old('firstname', isset($teacher) ? $teacher->firstname: '')}}" class="form-control" placeholder="Name" id="First Name">
                         </div>
                         <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" name="lastname" value="{{old('lastname', isset($user) ? $user->lastname : '')}}" class="form-control" placeholder="Name" id="fullname">
+                            <input type="text" name="lastname" value="{{old('lastname', isset($teacher) ? $teacher->lastname: '')}}" class="form-control" placeholder="Name" id="Last Name">
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email" value="{{old('email', isset($user) ? $user->email : '')}}" class="form-control" placeholder="Email">
+                            <label>Phone</label>
+                            <input type="text" name="phone" value="{{old('phone', isset($teacher) ? $teacher->phone: '')}}"  class="form-control" placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="text" name="phone" value="{{old('phone', isset($user) ? $user->phone : '')}}" class="form-control" placeholder="Phone Number">
+                            <label>Gender</label>
+                            <select name="gender" id="" class="form-control">
+                                <option selected>{{$teacher->gender}}</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
                         </div>
+                        @role('super-admin|admin')
                         <div class="form-group">
-                            <label>Role</label>
-                            <select name="role_id" class="form-control">
-                                <option selected value="{{$user->roles->first()->id}}">{{$user->roles->first()->name}}</option>
-                                @foreach ($roles as $role)
-                                    <option value='{{ $role->id }}'>{{ $role->name }}</option>
+                            <label>School</label>
+                            <select name="school_id" id="" class="form-control">
+                                <option value="{{$teacher->school->id}}">{{$teacher->school->name}}</option>
+                                @foreach ($schools as $school)
+                                    <option value="{{$school->id}}">{{$school->name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        @else
+                        <input type="hidden" name="school_id" value="{{auth()->user()->school->id}}">
+                        @endrole
+                        <div class="form-group">
+                            <label>Age Range</label>
+                            <select name="age_range" id="age_range" class="form-control">
+                                <option selected value="{{$teacher->age_range}}">{{$teacher->age_range}}</option>
+                                <option value="Under 25">Under 25</option>
+                                <option value="25-29">25-29</option>
+                                <option value="30-39">30-39</option>
+                                <option value="40-49">40-49</option>
+                                <option value="50-59">50-59</option>
+                                <option value="60+">60+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Employement Status</label>
+                            <select name="status" id="status" class="form-control">
+                                <option selected>{{$teacher->status}}</option>
+                                <option value="Fulltime">Fulltime</option>
+                                <option value="Part-time">Part-time</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Qualification</label>
+                            <select name="education" id="education" class="form-control">
+                                <option selected">{{$teacher->education}}</option>
+                                <option value="Below NCE">Below NCE</option>
+                                <option value="NCE">NCE</option>
+                                <option value="Bachelor degree">Bachelor degree</option>
+                                <option value="Masters degree">Masters degree</option>
+                                <option value="Above Masters">Above Masters</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Professional Certification</label>
+                            <select name="certification" id="certification" class="form-control">
+                                <option selected>{{$teacher->certification}}</option>
+                                <option value="TCRN">TCRN</option>
+                                <option value="COREN">COREN</option>
+                                <option value="National Certificate Of Education">National Certificate Of
+                                    Education</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Teaching Subject</label>
+                            <select name="subject" id="subject" class="form-control">
+                                <option selected>{{$teacher->subject}}</option>
+                                <option value="Arabic Language">Arabic Language</option>
+                                <option value="Basic Science">Basic Science</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="English">English</option>
+                                <option value="Mathematics">Mathematics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Teaching Experience</label>
+                            <select name="experience_school"  class="form-control">
+                                <option selected>{{$teacher->experience_school}}</option>
+                                <option value="This is my first year">This is my first year</option>
+                                <option value="1-2 years">1-2 years</option>
+                                <option value="3-5 years">3-5 years</option>
+                                <option value="6-10 years">6-10 years</option>
+                                <option value="11-15 years">11-15 years</option>
+                                <option value="16-20 years">16-20 years</option>
+                                <option value="More than 20 years">More than 20 years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Area of Core Competencies</label>
+                            <select name="competency" id="competency" class="form-control">
+                                <option selected>{{$teacher->competency}}</option>
+                                <option value="Good at Lesson Plan Design">Good at Lesson Plan Design
+                                </option>
+                                <option value="Able to Use Varied TEACHING Strategies">Able to Use Varied
+                                    TEACHING Strategies</option>
+                                <option value="Able to Assess">Able to Assess</option>
+                                <option value="Able to Identify Student Needs">Able to Identify Student
+                                    Needs</option>
+                                <option value="Maintaining a Professional Appearance">Maintaining a
+                                    Professional Appearance</option>
+                                <option value="Demonstrating a Commitment to the Profession">Demonstrating a
+                                    Commitment to the Profession</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ICT proficiency level</label>
+                            <select name="ict_level" id="ict_level" class="form-control">
+                                <option selected>{{$teacher->ict_level}}</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Spreadsheet skills (Microsoft Excel)</option>
+                                <option value="Advance">Advance</option>
                             </select>
                         </div>
                     </div>

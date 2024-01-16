@@ -1,32 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        table {
-            font-family: Verdana;
-            font-size: 14px;
-            border-collapse: collapse;
-            width: 600px;
-        }
-
-        td,
-        th {
-            padding: 10px;
-            text-align: left;
-            margin: 0;
-        }
-
-        tbody tr:nth-child(2n) {
-            background-color: #eee;
-        }
-
-        th {
-            position: sticky;
-            top: 0;
-            background-color: #333 !important;
-            color: white !important;
-        }
-    </style>
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Toolbar-->
         <div class="toolbar" id="kt_toolbar">
@@ -37,7 +11,7 @@
                     data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                     class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                     <!--begin::Title-->
-                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Schools</h1>
+                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Students</h1>
                     <!--end::Title-->
                     <!--begin::Separator-->
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -55,8 +29,8 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted"><a href="{{ route('app.schools.index') }}"
-                                class="text-muted text-hover-primary">Schools</a></li>
+                        <li class="breadcrumb-item text-muted"><a href="{{ route('app.students.index') }}"
+                                class="text-muted text-hover-primary">Students</a></li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -64,7 +38,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-dark">School Info</li>
+                        <li class="breadcrumb-item text-dark">Student Info</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -86,7 +60,7 @@
                             <!--begin: Pic-->
                             <div class="me-7 mb-4">
                                 <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                    <img src="{{ asset('2602414.png') }}" alt="image" />
+                                    <img src="{{ asset('360_F_299069957_9FfNrl3vi6yDSnvEgL6xXRVSYVb0PKkO.jpg') }}" alt="image" />
                                     <div
                                         class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px">
                                     </div>
@@ -102,7 +76,7 @@
                                         <!--begin::Name-->
                                         <div class="d-flex align-items-center mb-2">
                                             <a href="#"
-                                                class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $school->name }}</a>
+                                                class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $student->name }}</a>
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Info-->
@@ -121,7 +95,7 @@
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $school->state->name }}
+                                                <!--end::Svg Icon--> {{ $student->lga->name }}
                                             </a>
                                             <a href="#"
                                                 class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
@@ -137,23 +111,7 @@
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $school->lga->name }}
-                                            </a>
-                                            <a href="#"
-                                                class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
-                                                <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
-                                                <span class="svg-icon svg-icon-4 me-1">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path opacity="0.3"
-                                                            d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z"
-                                                            fill="currentColor" />
-                                                        <path
-                                                            d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z"
-                                                            fill="currentColor" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->{{ $school->code }}
+                                                <!--end::Svg Icon-->{{ $student->school->name }}
                                             </a>
                                         </div>
                                         <!--end::Info-->
@@ -172,21 +130,6 @@
                                 <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Overview</a>
                             </li>
                             <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Teachers</a>
-                            </li>
-                            <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Students</a>
-                            </li>
-                            <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Facilities</a>
-                            </li>
-                            <!--end::Nav item-->
                         </ul>
                         <!--begin::Navs-->
                     </div>
@@ -198,11 +141,11 @@
                     <div class="card-header cursor-pointer">
                         <!--begin::Card title-->
                         <div class="card-title m-0">
-                            <h3 class="fw-bolder m-0">School Profile Details</h3>
+                            <h3 class="fw-bolder m-0">Student Profile Details</h3>
                         </div>
                         <!--end::Card title-->
                         <!--begin::Action-->
-                        <a href="" class="btn btn-primary align-self-center">Edit Profile</a>
+                        <a href="{{route('app.students.edit', $student->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
                         <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
@@ -211,33 +154,41 @@
                         <!--begin::Row-->
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Name</label>
+                            <label class="col-lg-4 fw-bold text-muted">Student Name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8">
-                                <span class="fw-bolder fs-6 text-gray-800">{{ $school->name }}</span>
+                                <span class="fw-bolder fs-6 text-gray-800">{{ $student->name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Code</label>
+                            <label class="col-lg-4 fw-bold text-muted">Gender</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->code }}</span>
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">{{ $student->gender }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
-                        <!--end::Row-->
-                        <!--begin::Input group-->
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">State</label>
+                            <label class="col-lg-4 fw-bold text-muted">Date of Birth</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->state->name }}</span>
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">{{ $student->date_of_birth }}</span>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <div class="row mb-7">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 fw-bold text-muted">Place of Birth</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">{{ $student->place_of_birth }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
@@ -247,102 +198,114 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->lga->name }}</span>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Row-->
+                        <!--begin::Input group-->
+                        <div class="row mb-7">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 fw-bold text-muted">Nationality</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8 fv-row">
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->nationality }}</span>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <div class="row mb-7">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 fw-bold text-muted">LGA</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8 fv-row">
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->lga->name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Location</label>
+                            <label class="col-lg-4 fw-bold text-muted">School Name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->location }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->school->name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                          <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Type</label>
+                            <label class="col-lg-4 fw-bold text-muted">Class</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->type }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->class }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Category</label>
+                            <label class="col-lg-4 fw-bold text-muted">Attendance Percentage</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->category }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->attendance_percentage }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Agency</label>
+                            <label class="col-lg-4 fw-bold text-muted">Performance Percentage</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->agency }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->performance_percentage }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Gender</label>
+                            <label class="col-lg-4 fw-bold text-muted">Special Needs</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->gender }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->special_needs }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Staff</label>
+                            <label class="col-lg-4 fw-bold text-muted">Guardian Name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_staff }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->guardian_name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Students</label>
+                            <label class="col-lg-4 fw-bold text-muted">Guardian Phone</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_students }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->guardian_phone }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Boys Students</label>
+                            <label class="col-lg-4 fw-bold text-muted">Home Address</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_boys }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $student->home_address }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Girls Students</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_girls }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                       
+
                     </div>
                     <!--end::Card body-->
                 </div>

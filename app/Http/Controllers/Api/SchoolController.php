@@ -21,7 +21,7 @@ class SchoolController extends Controller
 
     public function findByLga($lga)
     {
-        $schools = School::where('lga_id', $lga)->get();
+        $schools = School::where('lga_id', $lga)->get(['id', 'name']);
 
         return response()->json($schools);
     }
@@ -30,13 +30,13 @@ class SchoolController extends Controller
     {
         $state = State::where('name', $state)->first();
         $lgas = Lga::where('state_id', $state->id)->get();
-        
+
         return response()->json($lgas);
     }
 
     public function saveSchool(Request $request)
     {
-        
+
         $school = DB::table('schools')->where('id', $request->school_id)->update([
             'no_of_students' =>$request->no_of_students,
             'no_of_staff' => $request->no_of_staff,
@@ -54,6 +54,6 @@ class SchoolController extends Controller
                 'message' => 'School Synced Successfully'
             ]);
         }
-       
+
     }
 }

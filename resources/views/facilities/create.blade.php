@@ -11,7 +11,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Users</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Facilities</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -29,7 +29,7 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">User Management</li>
+                    <li class="breadcrumb-item text-muted">Facilities</li>
                     <!--end::Item-->
                     <!--begin::Item-->
                     <li class="breadcrumb-item">
@@ -45,7 +45,7 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-dark">Create User</li>
+                    <li class="breadcrumb-item text-dark">Add Facility</li>
                     <!--end::Item-->
                 </ul>
                 <!--end::Breadcrumb-->
@@ -62,39 +62,94 @@
             <!--begin::Card-->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Create User</h3>
+                    <h3 class="card-title">Add Facility</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{route('app.users.store')}}" method="POST">
+                <form action="{{route('app.facilities.store')}}" method="POST">
                     @csrf
                     <!-- form start -->
                     <div class="card-body">
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" name="firstname"  class="form-control" placeholder="Name" id="First Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" name="lastname"  class="form-control" placeholder="Name" id="Last Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" name="email"  class="form-control" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="text" name="phone"  class="form-control" placeholder="Phone Number">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password"  class="form-control" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label>Role</label>
-                            <select name="roles[]" class="form-control">
-                                @foreach ($roles as $role)
-                                    <option value='{{ $role->id }}'>{{ $role->name }}</option>
+                            <label>LGA</label>
+                            <select name="lga_id" id="lga" class="form-control">
+                                @foreach ($lgas as $lga)
+                                    <option value="{{$lga->id}}">{{$lga->name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>School</label>
+                            <select name="school_id" id="school" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>How many classrooms does this school have?</label>
+                           <input type="number" name="num_of_classroom" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Does any class meet outside due of lack of classrooms? If Yes, How many? If No, write 0. </label>
+                           <input type="number" name="unavailable_classroom" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Are there any classrooms with more than one grade combined? If Yes, How many? If No, write 0.  </label>
+                           <input type="number" name="combined_classroom" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Does this school have electricity?</label>
+                            <select name="electricity"  class="form-control">
+                                <option>--Select Answer--</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>School Ammenities</label>
+                            <select id="select-facility-1" name="school_amenities" multiple placeholder="Select structure ..." autocomplete="off" class="form-control" multiple>
+                                <option value="1">Chairs and desks for all students</option>
+                                <option value="2"> Blackboard in every classroom</option>
+                                <option value="3">Computer that students use</option>
+                                <option value="4">Fans in all classrooms</option>
+                                <option value="4">Fan in principals office</option>
+                                <option value="5">Playground</option>
+                                <option value="6">Kitchen</option>
+                                <option value="7">A Cook</option>
+                                <option value="8"> Separate office for principal/headteacher</option>
+                            </select>
+                        </div>
+                        <p></p>
+                        <div class="form-group">
+                            <label>Does the school have any extra-curricular activities</label>
+                            <select id="select-facility-1" name="extra_curricular_activities" multiple placeholder="Select structure ..." autocomplete="off" class="form-control" multiple>
+                                <option value="1">Chairs and desks for all students</option>
+                                <option value="2"> Blackboard in every classroom</option>
+                                <option value="3">Computer that students use</option>
+                                <option value="4">Fans in all classrooms</option>
+                                <option value="4">Fan in principals office</option>
+                                <option value="5">Playground</option>
+                                <option value="6">Kitchen</option>
+                                <option value="7">A Cook</option>
+                                <option value="8"> Separate office for principal/headteacher</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>What is the school's main source of drinking water?</label>
+                            <select name="water" id="school_category" class="form-control">
+                                <option>--Select Answer--</option>
+                                <option>Tap Water</option>
+                                <option>Hand Pump </option>
+                                <option>Open Well</option>
+                                <option>Tanker Truck</option>
+                                <option>River, Stream, Canal</option>
+                                <option>Rain Water</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Does the school have any toilet facility for Boys and Girls?</label>
+                            <select name="toilet" id="school_category" class="form-control">
+                                <option>--Select Answer--</option>
+                                <option>Yes, They share same toilet</option>
+                                <option>Yes, They have seperate toilet</option>
+                                <option>No, They don't have toilets</option>
                             </select>
                         </div>
                     </div>
@@ -111,4 +166,37 @@
     </div>
     <!--end::Post-->
 </div>
+<script>
+    var lga = document.getElementById("lga");
+    var school = document.getElementById("school");
+    let Url = '{{ url('/api/') }}';
+
+    school.length = 0;
+
+    let defaultOption = document.createElement('option');
+    defaultOption.text = 'Choose School';
+
+    school.add(defaultOption);
+    school.selectedIndex = 0;
+
+    lga.addEventListener("change", function() {
+        // alert(state.value);
+
+        fetch(Url + '/schools/findByLga/' + lga.value)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                document.getElementById("school").innerHTML = "";
+                let option;
+                data.forEach(element => {
+                    option = document.createElement('option');
+                    option.text = element.name;
+                    option.value = element.id;
+                    school.add(option);
+                    console.log(element.name);
+                });
+
+            });
+    })
+</script>
 @endsection

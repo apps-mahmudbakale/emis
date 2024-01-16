@@ -10,8 +10,8 @@ class Teacher extends Model
     use HasFactory;
 
     protected $fillable = [
-        'staff_id',
         'school_id',
+        'lga_id',
         'firstname',
         'lastname',
         'phone',
@@ -34,4 +34,11 @@ class Teacher extends Model
     {
         return $this->belongsTo(School::class);
     }
+
+public function lga()
+{
+    return $this->belongsTo(Lga::class);
+}
+
+
 }

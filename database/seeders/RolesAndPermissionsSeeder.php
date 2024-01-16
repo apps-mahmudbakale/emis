@@ -26,30 +26,44 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete',
         ];
         $roles = [
+            'super-admin',
             'admin',
             'user',
-            'manager',
+            'principal',
+            'director',
+            'state-coordinator',
+            'lga-coordinator',
+            'zonal-coordinator',
         ];
         $entities = [
             'users',
             'roles',
             'schools',
+            'teachers',
+            'students',
+            'facilities',
+            'reports',
+            'monitoring',
+            'resource-planning',
+            'data-collection',
+            'settings',
+            'data-templates'
         ];
 
         foreach ($permissions as $permission) {
             foreach ($entities as $entity) {
                  Permission::create(['name' => $permission.'-'.$entity ]);
             }
-           
+
         }
 
         foreach ($roles as $role) {
             Role::create(['name' => $role]);
         }
 
-        $role = Role::findByName('admin');
+        $role = Role::findByName('super-admin');
         $role->givePermissionTo(Permission::all());
-        $userRole = User::find(1)->assignRole('admin');
+        $userRole = User::find(1)->assignRole('super-admin');
 
 }
 

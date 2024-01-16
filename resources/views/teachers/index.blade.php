@@ -47,7 +47,11 @@
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Card-->
-                <livewire:teachers :school="5" />
+                @role('super-admin|admin')
+                <livewire:teachers :school="0" />
+                @else
+                <livewire:teachers :school="auth()->user()->school->id" />
+                @endrole
                 <!--end::Card-->
             </div>
             <!--end::Container-->
@@ -84,7 +88,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form class="form" action="{{ route('app.schools.import') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="{{ route('app.teachers.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Input group-->
                         <div class="fv-row mb-10">
@@ -146,25 +150,8 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form id="kt_modal_export_users_form" class="form" action="#">
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="fs-6 fw-bold form-label mb-2">Select Roles:</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <select name="role" data-control="select2" data-placeholder="Select a role"
-                                data-hide-search="true" class="form-select form-select-solid fw-bolder">
-                                <option></option>
-                                <option value="Administrator">Administrator</option>
-                                <option value="Analyst">Analyst</option>
-                                <option value="Developer">Developer</option>
-                                <option value="Support">Support</option>
-                                <option value="Trial">Trial</option>
-                            </select>
-                            <!--end::Input-->
-                        </div>
-                        <!--end::Input group-->
+                    <form id="kt_modal_export_users_form"  class="form" action="{{route('app.schools.export')}}" method="POST">
+                        @csrf
                         <!--begin::Input group-->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
@@ -176,8 +163,7 @@
                                 <option></option>
                                 <option value="excel">Excel</option>
                                 <option value="pdf">PDF</option>
-                                <option value="cvs">CVS</option>
-                                <option value="zip">ZIP</option>
+                                <option value="csv">CSV</option>
                             </select>
                             <!--end::Input-->
                         </div>

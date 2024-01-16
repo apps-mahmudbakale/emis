@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SchoolsExport;
 use App\Models\Lga;
 use App\Models\State;
 use App\Models\School;
@@ -40,6 +41,24 @@ class SchoolController extends Controller
 
         return redirect()->route('app.schools.index')->with('success', 'Schools Imported');
     }
+
+    public function export(Request $request)
+    {
+        // dd($request->all());
+        if($request->format == 'pdf'){
+
+        }
+        if($request->format == 'excel'){
+            // dd('EXcel');
+             return Excel::download(new SchoolsExport, 'schools.xlsx');
+        }
+        if($request->format == 'csv'){
+             return Excel::download(new SchoolsExport, 'schools.csv');
+        }
+
+        return redirect()->route('app.schools.index')->with('error', 'Please Select Format to Export');
+    }
+
 
     /**
      * Store a newly created resource in storage.

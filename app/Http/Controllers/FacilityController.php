@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lga;
+use App\Models\State;
 use App\Models\Facility;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,10 @@ class FacilityController extends Controller
      */
     public function create()
     {
-        //
+        $state = State::where('name', 'Kano')->first();
+        $lgas = Lga::where('state_id', $state->id)->get();
+
+        return view('facilities.create', compact('lgas'));
     }
 
     /**
@@ -31,7 +36,8 @@ class FacilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $facility = Facility::create($request->all());
+        return redirect()->route('app.facilities.index')->with('success', 'Facilities Added');
     }
 
     /**
@@ -39,7 +45,7 @@ class FacilityController extends Controller
      */
     public function show(Facility $facility)
     {
-        //
+        return view('facilities.show', compact('facility'));
     }
 
     /**

@@ -37,7 +37,7 @@
                     data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                     class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                     <!--begin::Title-->
-                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Schools</h1>
+                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Teachers</h1>
                     <!--end::Title-->
                     <!--begin::Separator-->
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -55,8 +55,8 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted"><a href="{{ route('app.schools.index') }}"
-                                class="text-muted text-hover-primary">Schools</a></li>
+                        <li class="breadcrumb-item text-muted"><a href="{{ route('app.teachers.index') }}"
+                                class="text-muted text-hover-primary">Teachers</a></li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -64,7 +64,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-dark">School Info</li>
+                        <li class="breadcrumb-item text-dark">Teacher's Info</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -86,7 +86,12 @@
                             <!--begin: Pic-->
                             <div class="me-7 mb-4">
                                 <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                    <img src="{{ asset('2602414.png') }}" alt="image" />
+                                    @if ($teacher->gender == 'Male')
+                                    <img src="{{ asset('school-man-teacher-with-book-and-green-board-design-free-vector.jpg') }}" alt="image" />
+                                    @else
+                                    <img src="{{ asset('teacher-teaching-in-front-class-room-vector-29219848.jpg') }}" alt="image" />
+                                    @endif
+
                                     <div
                                         class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px">
                                     </div>
@@ -102,7 +107,7 @@
                                         <!--begin::Name-->
                                         <div class="d-flex align-items-center mb-2">
                                             <a href="#"
-                                                class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $school->name }}</a>
+                                                class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $teacher->firstname." ".$teacher->lastname }}</a>
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Info-->
@@ -121,7 +126,7 @@
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $school->state->name }}
+                                                <!--end::Svg Icon-->{{ $teacher->gender }}
                                             </a>
                                             <a href="#"
                                                 class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
@@ -137,23 +142,7 @@
                                                             fill="currentColor" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $school->lga->name }}
-                                            </a>
-                                            <a href="#"
-                                                class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
-                                                <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
-                                                <span class="svg-icon svg-icon-4 me-1">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path opacity="0.3"
-                                                            d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z"
-                                                            fill="currentColor" />
-                                                        <path
-                                                            d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z"
-                                                            fill="currentColor" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->{{ $school->code }}
+                                                <!--end::Svg Icon-->{{ $teacher->phone }}
                                             </a>
                                         </div>
                                         <!--end::Info-->
@@ -172,21 +161,6 @@
                                 <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Overview</a>
                             </li>
                             <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Teachers</a>
-                            </li>
-                            <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Students</a>
-                            </li>
-                            <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="">Facilities</a>
-                            </li>
-                            <!--end::Nav item-->
                         </ul>
                         <!--begin::Navs-->
                     </div>
@@ -198,11 +172,11 @@
                     <div class="card-header cursor-pointer">
                         <!--begin::Card title-->
                         <div class="card-title m-0">
-                            <h3 class="fw-bolder m-0">School Profile Details</h3>
+                            <h3 class="fw-bolder m-0">Teacher's Profile Details</h3>
                         </div>
                         <!--end::Card title-->
                         <!--begin::Action-->
-                        <a href="" class="btn btn-primary align-self-center">Edit Profile</a>
+                        <a href="{{route('app.teachers.edit', $teacher->id)}}" class="btn btn-primary align-self-center">Edit Profile</a>
                         <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
@@ -211,21 +185,32 @@
                         <!--begin::Row-->
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Name</label>
+                            <label class="col-lg-4 fw-bold text-muted">Teacher Name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8">
-                                <span class="fw-bolder fs-6 text-gray-800">{{ $school->name }}</span>
+                                <span class="fw-bolder fs-6 text-gray-800">{{ $teacher->firstname." ".$teacher->lastname }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Code</label>
+                            <label class="col-lg-4 fw-bold text-muted">Gender</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->code }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->gender }}</span>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Row-->
+                        <div class="row mb-7">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 fw-bold text-muted">Age Range</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8 fv-row">
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->age_range }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
@@ -237,7 +222,7 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->state->name }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">KANO</span>
                             </div>
                             <!--end::Col-->
                         </div>
@@ -247,102 +232,91 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->lga->name }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->lga->name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Location</label>
+                            <label class="col-lg-4 fw-bold text-muted">School</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->location }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->school->name }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                          <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Type</label>
+                            <label class="col-lg-4 fw-bold text-muted">Employment Status</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->type }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->status }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Category</label>
+                            <label class="col-lg-4 fw-bold text-muted">Qualifiication</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->category }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->education }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Agency</label>
+                            <label class="col-lg-4 fw-bold text-muted">Professional Certification</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->agency }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->certification }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">School Gender</label>
+                            <label class="col-lg-4 fw-bold text-muted">Teaching Subject</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->gender }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->subject }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Staff</label>
+                            <label class="col-lg-4 fw-bold text-muted">Teacing Experience</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_staff }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->experience_school }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">No of Students</label>
+                            <label class="col-lg-4 fw-bold text-muted">Area of Core Competency</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_students }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->competency }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
                         <div class="row mb-7">
                             <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Boys Students</label>
+                            <label class="col-lg-4 fw-bold text-muted">ICT Skills</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_boys }}</span>
+                                <span class="fw-bold text-gray-800 fs-6">{{ $teacher->ict_level }}</span>
                             </div>
                             <!--end::Col-->
                         </div>
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-bold text-muted">Girls Students</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <span class="fw-bold text-gray-800 fs-6">{{ $school->no_of_girls }}</span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                       
                     </div>
                     <!--end::Card body-->
                 </div>

@@ -24,8 +24,6 @@ return new class extends Migration
             $table->integer('no_of_staff')->nullable();
             $table->integer('no_of_boys')->nullable();
             $table->integer('no_of_girls')->nullable();
-            $table->string('type')->nullable();
-            $table->string('category')->nullable();
             $table->string('agency')->nullable();
             $table->string('gender')->nullable();
             $table->timestamps();

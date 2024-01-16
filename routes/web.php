@@ -43,13 +43,18 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => 'auth'], functi
     Route::resource('roles', RoleController::class);
     Route::resource('schools', SchoolController::class);
     Route::resource('teachers', TeacherController::class);
+    Route::post('teachers/import', [TeacherController::class, 'import'])->name('teachers.import');
     Route::resource('students', StudentController::class);
     Route::resource('reports', ReportController::class);
     Route::resource('resources', ResourcesController::class);
     Route::resource('monitoring', MonitoringController::class);
     Route::resource('facilities', FacilityController::class);
     Route::post('schools/import', [SchoolController::class, 'import'])->name('schools.import');
+    Route::post('schools/export', [SchoolController::class, 'export'])->name('schools.export');
     Route::resource('settings', SystemSettingsController::class)->except('store', 'update', 'edit', 'show', 'destroy');
     Route::post('settings', [SystemSettingsController::class, 'updateSystemSettings'])->name('update.system.settings');
     Route::post('settings/currency', [SystemSettingsController::class, 'updateStoreCurrency'])->name('update.store.currency');
+    Route::get('chat', function (){
+                return view('chat.index');
+    })->name('chat');
 });

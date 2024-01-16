@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,7 +27,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('users.create', compact('roles'));
+        $schools = School::all();
+        return view('users.create', compact('roles', 'schools'));
     }
 
     /**
@@ -38,7 +40,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $user = User::create(array_merge($request->except('password', 'naked'), ['naked' => $request->password,'password' => bcrypt($request->password)]));
+        $user = User::create(array_merge($request->except('password'), ['password' => bcrypt($request->password)]));
         $user->syncRoles($request->input('roles', []));
         return redirect()->route('app.users.index')->with('success', 'User Added');
     }

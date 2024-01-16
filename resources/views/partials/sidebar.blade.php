@@ -50,12 +50,12 @@
                                     viewBox="0 0 24 24" fill="none">
                                     <rect x="2" y="2" width="9" height="9" rx="2"
                                         fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9"
-                                        rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9"
-                                        rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9"
-                                        rx="2" fill="currentColor" />
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                                        fill="currentColor" />
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                                        fill="currentColor" />
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                                        fill="currentColor" />
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
@@ -68,6 +68,7 @@
                         <div class="separator mx-1 my-4"></div>
                     </div>
                 </div>
+                @can('read-users')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -108,8 +109,10 @@
                         </div>
                     </div>
                 </div>
+                @endcan
+                @can('read-reports')
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('app.reports.index')}}">
+                    <a class="menu-link" href="{{ route('app.reports.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -128,6 +131,8 @@
                         <span class="menu-title">Data Analysis & Reporting</span>
                     </a>
                 </div>
+                @endcan
+                @can('read-data-collection')
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -150,36 +155,42 @@
                     </span>
 
                     <div class="menu-sub menu-sub-accordion">
-                    <div class="menu-item">
-                            <a class="menu-link" href="{{route('app.schools.index')}}">
+                        @can('read-schools')
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('app.schools.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Schools</span>
                             </a>
                         </div>
+                        @endcan
+                        @can('read-teachers')
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('app.teachers.index')}}">
+                            <a class="menu-link" href="{{ route('app.teachers.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Teachers</span>
                             </a>
                         </div>
+                        @endcan
+                        @can('read-students')
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('app.students.index')}}">
+                            <a class="menu-link" href="{{ route('app.students.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Students</span>
                             </a>
                         </div>
+                        @endcan
                         <div class="menu-item">
                             <a class="menu-link" href="">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Curricullum</span>
+                                <span class="menu-title">Scheme</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -191,7 +202,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('app.facilities.index')}}">
+                            <a class="menu-link" href="{{ route('app.facilities.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -208,8 +219,9 @@
                         </div>
                     </div>
                 </div>
+                @endcan
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('app.monitoring.index')}}">
+                    <a class="menu-link" href="{{ route('app.monitoring.index') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -249,7 +261,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{route('app.chat')}}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -299,6 +311,52 @@
                         </span>
                         <span class="menu-title">Integration with Other System</span>
                     </a>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
+                            <i class="fas fa-file-excel icon-nm"></i>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Spreadsheet Templates</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{asset('data_templates/School Data Template.csv')}}" download>
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Schools Data Template</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{asset('data_templates/Teachers Data Template.csv')}}" download>
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Teachers Data Template</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{asset('data_templates/Student Data Template.csv')}}" download>
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Students Data Template</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Scheme Template</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('app.settings.index') }}">

@@ -9,36 +9,50 @@ class Teachers extends Base
 {
     public $sortBy = 'firstname';
     public $school;
+
     public function mount($school)
     {
         $this->school = $school;
     }
+
     public function render()
     {
-        if($this->school && !empty($this->school)){
+        if (!$this->school || empty($this->school)) {
+            $query = Teacher::query();
+
             if ($this->search) {
-                $teachers = Teacher::query()
-                    ->where('firstname', 'like', '%' . $this->search . '%')
-                    ->Orwhere('lastname', 'like', '%' . $this->search . '%')
-                    ->Orwhere('phone', 'like', '%' . $this->search . '%')
-                    // ->Orwhere('email', 'like', '%' . $this->search . '%')
-                    ->simplePaginate(10);
-    
-                return view(
-                    'livewire.teachers',
-                    ['teahers' => $teachers]
-                );
+                $this->applySearch($query);
             } else {
-                $teachers = Teacher::query()->orderBy($this->sortBy, $this->sortDirection)
-                    ->simplePaginate($this->perPage);
-                return view(
-                    'livewire.teachers',
-                    ['teachers' => $teachers]
-                );
-            } 
-        }else {
-            dd('hmm');
+                $this->applySorting($query);
+            }
+
+            $teachers = $query->simplePaginate($this->perPage);
+            return view('livewire.teachers', ['teachers' => $teachers]);
         }
-         
+
+        $query = Teacher::query()->where('school_id', $this->school);
+
+        if ($this->search) {
+            $this->applySearch($query);
+        } else {
+            $this->applySorting($query);
+        }
+
+        $teachers = $query->simplePaginate($this->perPage);
+
+        return view('livewire.teachers', ['teachers' => $teachers]);
+    }
+
+    protected function applySearch($query)
+    {
+        $query->where('firstname', 'like', '%' . $this->search . '%')
+              ->orWhere('lastname', 'like', '%' . $this->search . '%')
+              ->orWhere('phone', 'like', '%' . $this->search . '%');
+        // Add more search criteria as needed
+    }
+
+    protected function applySorting($query)
+    {
+        $query->orderBy($this->sortBy, $this->sortDirection);
     }
 }

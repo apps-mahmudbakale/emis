@@ -23,7 +23,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'phone',
-        'naked',
+        'school_id',
         'password'
     ];
 
@@ -50,4 +50,10 @@ class User extends Authenticatable
     {
         return $this->firstname." ".$this->lastname;
     }
+
+public function school()
+{
+    return $this->belongsTo(School::class);
+}
+
 }

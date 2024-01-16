@@ -109,7 +109,7 @@
                         <div class="form-group">
                             <label>School Gender</label>
                             <select name="gender" id="school_gender" class="form-control">
-                                <option selected>{{$school->school_gender}}</option>
+                                <option selected>{{$school->gender}}</option>
                                 <option>Boys</option>
                                 <option>Girls</option>
                                 <option>Co-exist</option>
