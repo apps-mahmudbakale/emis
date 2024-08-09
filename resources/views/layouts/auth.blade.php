@@ -15,6 +15,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>

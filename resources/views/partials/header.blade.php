@@ -1,5 +1,8 @@
 <!--begin::Header-->
 <div id="kt_header" style="" class="header align-items-stretch">
+    <img src="{{asset('kano.jpg')}}" alt="">
+    <h2 style="width: 257%;padding: 17px 19px;">Adolescent Girls Initiative for Learning and Empowerment (AGILE) Project</h2>
+    <img src="{{asset('AGILE.jpg')}}" alt="">
     <!--begin::Container-->
     <div class="container-fluid d-flex align-items-stretch justify-content-between">
         <!--begin::Aside mobile toggle-->
@@ -29,14 +32,14 @@
             <div class="d-flex align-items-stretch" id="kt_header_nav">
                 <!--begin::Menu wrapper-->
                 <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
-                   
+
                     <!--end::Menu-->
                 </div>
                 <!--end::Menu wrapper-->
             </div>
             <!--end::Navbar-->
             <!--begin::Toolbar wrapper-->
-            <div class="d-flex align-items-stretch flex-shrink-0">  
+            <div class="d-flex align-items-stretch flex-shrink-0">
                 <!--begin::Chat-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <!--begin::Menu wrapper-->
@@ -126,7 +129,7 @@
                 </div>
                 <!--end::User menu-->
                 <!--begin::Header menu toggle-->
-                <div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="Show header menu">
+                {{-- <div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="Show header menu">
                     <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
                         <!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
                         <span class="svg-icon svg-icon-1">
@@ -137,7 +140,7 @@
                         </span>
                         <!--end::Svg Icon-->
                     </div>
-                </div>
+                </div> --}}
                 <!--end::Header menu toggle-->
             </div>
             <!--end::Toolbar wrapper-->

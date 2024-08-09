@@ -1,254 +1,233 @@
 @extends('layouts.app')
+
 @section('content')
-    <!--begin::Content-->
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background-image: url('{{asset('Picture 1.png')}}');background-size: cover;">
-        <!--begin::Toolbar-->
-        <div class="toolbar bg-transparent pt-6 mb-5" id="kt_toolbar">
-            <!--begin::Container-->
-            <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack">
-                <!--begin::Page title-->
-                <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
-                    data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-                    class="page-title d-flex flex-column align-items-start me-3 mb-5 mb-lg-0">
-                    <!--begin::Title-->
-                    <h1 class="d-flex text-dark fw-bolder fs-3 flex-column mb-0">Dashboard
-                        {{-- <!--begin::Description-->
-                        <span class="text-muted fs-7 fw-bold mt-2">You have 7
-                            <span class="text-primary fw-bolder">Active Projects</span></span> --}}
-                        <!--end::Description-->
-                    </h1>
-                    <!--end::Title-->
-                </div>
-                <!--end::Page title-->
-                <!--begin::Actions-->
-                {{-- <div class="d-flex align-items-center gap-2 gap-lg-3">
-                    <!--begin::Secondary button-->
-                    <a href="../../demo1/dist/.html" class="btn btn-sm btn-white btn-active-white btn-active-color-primary"
-                        data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">Invite Friend</a>
-                    <!--end::Secondary button-->
-                    <!--begin::Primary button-->
-                    <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#kt_modal_new_target">New Project</a>
-                    <!--end::Primary button-->
-                </div> --}}
-                <!--end::Actions-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Toolbar-->
-        <!--begin::Post-->
-        <div class="post d-flex flex-column-fluid" id="kt_post">
-            <!--begin::Container-->
-            <div id="" class="container">
-                <!--begin::Row-->
-                <div class="row">
-                     <!--begin::Col-->
-                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <a href="{{route('app.reports.index')}}"><div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px;">Data Analysis & Reporting</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Data Analysis & Reporting</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        </a>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-
-                     <!--begin::Col-->
-                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <a href=""><div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px;">Data Collection & Management</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Data Collection & Management</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div></a>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-                     <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #009ff7;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px;">Monitoring and Evaluation</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Monitoring and Evaluation</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-                    <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #080655;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px;">Resource Planing</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Resource Planing</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-                    <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #50cd89;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px; font-size: 31px !important;">Communication & collaboration</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Communication & collaboration</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-
-                    <!--begin::Col-->
-                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4">
-                        <!--begin::Card widget 16-->
-                        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center h-md-50 mb-5 mb-xl-10"
-                            style="background-color: #f27635;background-image:url('{{asset('media/svg/shapes/wave-bg-dark.svg')}}'); background-size: cover;">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bolder text-white me-2 lh-1 ls-n2" style="height:230px;">Integration with Other System</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Subtitle-->
-                                    <span class="text-white opacity-50 pt-1 fw-bold fs-6">Integration with Other System</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Card body-->
-                            <div class="card-body d-flex align-items-end pt-0">
-                                <!--begin::Progress-->
-                                <div class="d-flex align-items-center flex-column mt-3 w-100">
-
-
-                                </div>
-                                <!--end::Progress-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card widget 16-->
-                    </div>
-                    <!--end::Col-->
-                </div>
-                <!--end::Row-->
-            </div>
-            <!--end::Container-->
-        </div>
-        <!--end::Post-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Toolbar-->
+    <div class="toolbar" id="kt_toolbar">
     </div>
-    <!--end::Content-->
+    <!--end::Toolbar-->
+
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-xxl">
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-6">
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+
+                <!--begin::Card body-->
+                <div class="card-body py-4">
+
+                    <!--begin::Statistics Cards-->
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <div class="card card-custom bg-light-primary card-stretch gutter-b">
+                                <div class="card-body">
+                                        <span class="svg-icon svg-icon-2x svg-icon-primary d-block my-2">
+                                            <!-- SVG Icon for Students -->
+                                        </span>
+                                    <div class="text-dark font-weight-bolder font-size-h2 mt-3">{{ $studentsCount }}</div>
+                                    <a href="#" class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">Number of Students</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-custom bg-light-success card-stretch gutter-b">
+                                <div class="card-body">
+                                        <span class="svg-icon svg-icon-2x svg-icon-success d-block my-2">
+                                            <!-- SVG Icon for Schools -->
+                                        </span>
+                                    <div class="text-dark font-weight-bolder font-size-h2 mt-3">{{ $schoolsCount }}</div>
+                                    <a href="#" class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">Number of Schools</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-custom bg-light-warning card-stretch gutter-b">
+                                <div class="card-body">
+                                        <span class="svg-icon svg-icon-2x svg-icon-warning d-block my-2">
+                                            <!-- SVG Icon for Teachers -->
+                                        </span>
+                                    <div class="text-dark font-weight-bolder font-size-h2 mt-3">{{ $teachersCount }}</div>
+                                    <a href="#" class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">Number of Teachers</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Statistics Cards-->
+
+                    <!-- Existing content with charts -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-toolbar">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="container1" data-highcharts-chart="1" style="overflow: hidden;" aria-hidden="false">
+                                <!-- Highcharts content -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-toolbar">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="container2" data-highcharts-chart="0" style="overflow: hidden;" aria-hidden="false">
+                                <!-- Highcharts content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Post-->
+</div>
+<!--end::Content-->
+<script type="text/javascript">
+    // Data retrieved from https://netmarketshare.com/
+    // Radialize the colors
+    Highcharts.setOptions({
+        colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: {
+                    cx: 0.5,
+                    cy: 0.3,
+                    r: 0.7
+                },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        })
+    });
+
+    // Build the chart
+    Highcharts.chart('container2', {
+        credits: {
+            enabled: false
+        },
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Numbers Schools Based on LGA in Kano',
+            align: 'left'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.0f} ',
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: [
+            @foreach ($lgaschools as $series)
+    {
+        name: '{{ $series['name'] }}',
+        y: {{ $series['y'] }},
+    },
+    @endforeach
+    ]
+    }]
+    });
+
+</script>
+<script type="text/javascript">
+    Highcharts.chart('container1', {
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            align: 'left',
+            text: 'Numbers Schools Based on LGA in Kano'
+        },
+        accessibility: {
+            announceNewData: {
+                enabled: false
+            }
+        },
+        xAxis: {
+            type: 'category',
+            title: {
+                text: 'LGAs'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Total Number of Schools'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.0f}'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b> of total<br/>'
+        },
+
+        series: [
+            {
+                name: 'Schools',
+                colorByPoint: true,
+                data: [
+                @foreach ($lgaschools as $series)
+    {
+        name: '{{ $series['name'] }}',
+        y: {{ $series['y'] }},
+    },
+    @endforeach
+
+    ]
+    }
+    ],
+    });
+
+</script>
 @endsection

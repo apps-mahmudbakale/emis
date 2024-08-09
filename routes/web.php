@@ -30,6 +30,11 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});
+
 Route::get('/home', function () {
     $state = State::where('name', 'Kano')->first();
     return Lga::where('state_id', $state->id)->where('name', 'Ajingi')->first();

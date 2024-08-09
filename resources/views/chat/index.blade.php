@@ -1145,7 +1145,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Avatar-->
                                                 <div class="symbol symbol-35px symbol-circle">
-                                                    <img alt="Pic" src="{{asset('media/avatars/300-12.jpg')}}">
+                                                    <img alt="Pic" src="{{asset('media/avatars/300-12.jpg')}}c">
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <!--begin::Details-->
